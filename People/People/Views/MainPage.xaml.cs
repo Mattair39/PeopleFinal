@@ -1,4 +1,5 @@
 ﻿using People.Models;
+using People.Repositories;
 using System.Collections.Generic;
 
 namespace People;
@@ -15,8 +16,11 @@ public partial class MainPage : ContentPage
     {
         statusMessage.Text = "";
 
-        App.PersonRepo.AddNewPerson(newPerson.Text);
-        statusMessage.Text = App.PersonRepo.StatusMessage;
+        Person person = new Person
+        {
+            Name = newPerson.Text
+        };
+        App.PersonRepo.AddNewPerson(person);
     }
 
     public void OnGetButtonClicked(object sender, EventArgs args)
